@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYAVA</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+        }
+        .hero-text h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+        .hero-text p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            z-index: 10;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f0a500;
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+        .content {
+            height: 100vh;
+            padding: 50px;
+            background: #1c1c1c; /* 暗色背景 */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff; /* 白色文字 */
+        }
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .slideshow {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+        .slideshow img {
+            width: 100%;
+            border-radius: 8px;
+            display: none;
+        }
+        .slideshow img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">CYEEAVA</div>
+        <div class="nav-links">
+            <a href="./selfintro.html">關於我們</a>
+            <a href="./product.html">產品</a>
+            <a href="./connect.html">聯絡</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <video autoplay muted loop>
+            <source src="./videoplayback.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Arduino&Verilog&nbsp;R&D center</h1>
+            <p>超越極限與卓越構想</p>
+        </div>
+        <div class="scroll-indicator">向下滾動查看更多</div>
+    </div>
+
+    <div class="content">
+        <h2>我們的產品</h2>
+        <p>探索我們最先進的技術與創新產品，幫助您實現更多可能性。</p>
+        <div class="slideshow">
+            <img src="./Elonma.jpg" class="active" alt="圖片 1">
+            <img src="./tsmc.jpeg" alt="圖片 2">
+            <img src="./nvudia.jpg" alt="圖片 3">
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.slideshow img');
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 2500); // 每2.5秒切換圖片
+    </script>
+    <footer>
+        &copy; 2025 XN 版權所有
+    </footer>
+</body>
+</html>
